@@ -7,19 +7,16 @@ package main
 import "fmt"
 
 func waysToSplitArray(nums []int) int {
-	var sumLeft int64 = 0
-	var sumRight int64 = 0
-	var sumRightNew int64
+	var sumLeft, sumRight int64 = 0;
 	cnt := 0
 
 	for i := 0; i < len(nums); i++ {
 		sumRight += int64(nums[i])
 	}
 	for i := 0; i < len(nums)-1; i++ {
-		sumLeft += int64(nums[i])
-		sumRightNew = sumRight - sumLeft
-		fmt.Println(sumLeft, sumRightNew)
-		if sumLeft >= sumRightNew {
+		sumLeft += int64(nums[i]);
+		
+		if sumLeft >= sumRight - sumLeft {
 			cnt++
 		}
 	}
